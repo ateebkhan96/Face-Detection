@@ -22,7 +22,7 @@ def webcam_detection():
             # frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             # results = model(frame)
             # output = np.squeeze(results.render())
-            frame = webrtc_streamer()
+            frame = webrtc_streamer(key="face")
             frame = np.array(frame)
             results = model(frame)
             output = np.squeeze(results.render()) 
