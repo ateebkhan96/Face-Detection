@@ -11,7 +11,7 @@ def webcam_detection():
     start_button = st.button('Start webcam detection')
     stop_button = st.button('Stop webcam detection')
     FRAME_WINDOW = st.image([])
-    camera = cv2.VideoCapture(0)
+    camera = cv2.VideoCapture(1)
 
     if start_button:
         run = True
