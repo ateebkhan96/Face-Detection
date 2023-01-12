@@ -4,6 +4,7 @@ from matplotlib import pyplot as plt
 import numpy as np
 import cv2
 from streamlit_webrtc import webrtc_streamer
+import time
 
 
 model = torch.hub.load('ultralytics/yolov5', 'custom', path='yolov5/runs/train/exp/weights/last.pt', force_reload=True)
@@ -23,7 +24,7 @@ def webcam_detection():
             # results = model(frame)
             # output = np.squeeze(results.render())
             #frame = webrtc_streamer(key="face",video_frame_callback=video_frame_callback)
-            webrtc_streamer(key="example", video_frame_callback=lambda x:video_frame_callback(x,FRAME_WINDOW))
+            webrtc_streamer(key=str(time.time()), video_frame_callback=lambda x:video_frame_callback(x,FRAME_WINDOW))
             # frame = np.array(frame)
             # results = model(frame)
             # output = np.squeeze(results.render()) 
