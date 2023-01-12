@@ -3,6 +3,7 @@ import torch
 from matplotlib import pyplot as plt
 import numpy as np
 import cv2
+from PIL import ImageGrab
 
 model = torch.hub.load('ultralytics/yolov5', 'custom', path='yolov5/runs/train/exp/weights/last.pt', force_reload=True)
 
@@ -16,9 +17,12 @@ def webcam_detection():
     if start_button:
         run = True
         while run:
-            _, frame = camera.read()
-            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            results = model(frame)
+            # _, frame = camera.read()
+            # frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            # results = model(frame)
+            img = ImageGrab.grab()
+            img_np = np.array(img)
+            results = model(img_np)
             output = np.squeeze(results.render())
             FRAME_WINDOW.image(output)
             if stop_button:
