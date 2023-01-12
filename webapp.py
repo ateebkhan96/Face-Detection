@@ -22,11 +22,12 @@ def webcam_detection():
             # frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             # results = model(frame)
             # output = np.squeeze(results.render())
-            frame = webrtc_streamer(key="face")
-            frame = np.array(frame)
-            results = model(frame)
-            output = np.squeeze(results.render()) 
-            FRAME_WINDOW.image(output)
+            #frame = webrtc_streamer(key="face",video_frame_callback=video_frame_callback)
+            webrtc_streamer(key="example", video_frame_callback=lambda x:video_frame_callback(x,FRAME_WINDOW))
+            # frame = np.array(frame)
+            # results = model(frame)
+            # output = np.squeeze(results.render()) 
+            # FRAME_WINDOW.image(output)
             if stop_button:
                 run = False
                 st.write("Webcam has stopped")
@@ -49,6 +50,15 @@ def image_detection():
         st.warning("Please upload an image!")
 
     st.write("Thank you for using Face Detection Model")
+
+
+def video_frame_callback(frame,FRAME_WINDOW):
+    img = frame.to_ndarray(format="bgr24")
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    results = model(img)
+    output = np.squeeze(results.render())
+    FRAME_WINDOW.image(output)
+
 
 def main():
     st.header("Face Detection WebApp by Ateeb Khan")
