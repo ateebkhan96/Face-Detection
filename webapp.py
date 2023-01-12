@@ -3,13 +3,13 @@ import torch
 from matplotlib import pyplot as plt
 import numpy as np
 import cv2
-from streamlit_webrtc import webrtc_streamer
+from streamlit_webrtc import webrtc_streamer,RTCConfiguration,WebRtcMode
 import time
 
 
 model = torch.hub.load('ultralytics/yolov5', 'custom', path='yolov5/runs/train/exp/weights/last.pt', force_reload=True)
 
-
+RTC_CONFIGURATION = RTCConfiguration({"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]})
 def webcam_detection():
     st.error("Due to Some Issues, Web Cam Detection is Down")
     start_button = st.button('Start webcam detection')
@@ -69,7 +69,9 @@ def main():
     if option == "Image":
         image_detection()
     else:
-        webcam_detection()
+        #webcam_detection()
+        webrtc_streamer(key="example", mode=WebRtcMode.SENDRECV, rtc_configuration=RTC_CONFIGURATION,
+                        video_processor_factory=webcam_detection)
 
 if __name__ == "__main__":
     main()
