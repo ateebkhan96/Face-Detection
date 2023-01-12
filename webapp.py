@@ -11,7 +11,7 @@ model = torch.hub.load('ultralytics/yolov5', 'custom', path='yolov5/runs/train/e
 
 
 def webcam_detection():
-    st.error("Due to Some Errors, Web Detection is Down")
+    st.error("Due to Some Issues, Web Cam Detection is Down")
     start_button = st.button('Start webcam detection')
     stop_button = st.button('Stop webcam detection')
     FRAME_WINDOW = st.image([])
