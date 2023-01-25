@@ -69,9 +69,10 @@ def main():
     if option == "Image":
         image_detection()
     else:
+        st.error("Webcam detection is Down for now")                
         #webcam_detection()
-        webrtc_streamer(key="example", mode=WebRtcMode.SENDRECV, rtc_configuration=RTC_CONFIGURATION,
-                        video_processor_factory=webcam_detection)
+        #webrtc_streamer(key="example", mode=WebRtcMode.SENDRECV, rtc_configuration=RTC_CONFIGURATION,
+                        #video_processor_factory=webcam_detection)
 
 if __name__ == "__main__":
     main()
