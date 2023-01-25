@@ -64,12 +64,12 @@ def video_frame_callback(frame,FRAME_WINDOW):
 
 def main():
     st.header("Face Detection WebApp by Ateeb Khan")
-    st.subheader("Select the option below to detect")
-    option = st.selectbox("Select one option",["Image", "Webcam"])
-    if option == "Image":
-        image_detection()
-    else:
-        st.error("Webcam detection is Down for now")                
+    #st.subheader("Select the option below to detect")
+    #option = st.selectbox("Select one option",["Image", "Webcam"])
+    #if option == "Image":
+    image_detection()
+    #else:
+    #    st.error("Webcam face detection is down for now due to error")                
         #webcam_detection()
         #webrtc_streamer(key="example", mode=WebRtcMode.SENDRECV, rtc_configuration=RTC_CONFIGURATION,
                         #video_processor_factory=webcam_detection)
