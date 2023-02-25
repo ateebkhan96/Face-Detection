@@ -5,6 +5,7 @@ Deployed Version
 The deployed version of this web app only supports image detection and can be found here.
 
 How to Use
+
 Upload an image using the file uploader.
 The webapp will detect any faces present in the image and display the output.
 
