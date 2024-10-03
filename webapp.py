@@ -3,8 +3,8 @@ import torch
 import numpy as np
 import cv2
 
-# Directly load the model using torch.load
-@st.cache_resource  # Caching the model to avoid reloading it repeatedly
+# Use st.cache instead of st.cache_resource for older versions of Streamlit
+@st.cache  # Caching the model to avoid reloading it repeatedly
 def load_model():
     model = torch.load('yolov5/runs/train/exp/weights/last.pt', map_location=torch.device('cpu'))  # Use CPU for Streamlit
     model.eval()  # Set model to evaluation mode
