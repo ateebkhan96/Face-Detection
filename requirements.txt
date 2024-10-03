@@ -107,6 +107,7 @@ traitlets==5.8.1
 typing_extensions==4.4.0
 tzdata==2022.7
 tzlocal==4.2
+ultralytics==0.0.44
 urllib3==1.26.14
 validators==0.20.0
 watchdog==2.2.1
