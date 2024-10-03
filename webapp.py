@@ -2,9 +2,10 @@ import streamlit as st
 import torch
 import numpy as np
 import cv2
+from ultralytics import YOLO
 
-# Load the YOLOv5 model
-model = torch.hub.load('ultralytics/yolov5', 'custom', path='yolov5/runs/train/exp/weights/last.pt', force_reload=False)
+# Load the YOLOv5 model without using torch.hub
+model = YOLO('yolov5/runs/train/exp/weights/last.pt')
 
 def image_detection():
     # File uploader to upload an image
@@ -15,7 +16,7 @@ def image_detection():
         img = cv2.imdecode(np.frombuffer(uploaded_file.read(), np.uint8), cv2.IMREAD_COLOR)
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         
-        # Run the YOLOv5 model on the image
+        # Run the YOLO model on the image
         results = model(img)
         output = np.squeeze(results.render())
         
